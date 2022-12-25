@@ -16,22 +16,26 @@ jobs:
       - name: Prepare for build
         run: |
            git clone https://aur.archlinux.org/linux-lqx.git
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch" linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch' linux-lqx/PKGBUILD
            curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.1/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
-           sed -i -e "/export KBUILD_BUILD_HOST=archlinux/i export BUILD_FLAGS=(LLVM=1 LLVM_IAS=1)" linux-lqx/PKGBUILD
-           sed -i 's/make /make ${BUILD_FLAGS[*]} /g' linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_NONE" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_HAS_LTO_CLANG" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG_FULL" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_CLANG_THIN" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_FULL" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL" linux-lqx/PKGBUILD
-           sed -i -e "/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE" linux-lqx/PKGBUILD
+           sed -i -e '/export KBUILD_BUILD_HOST=archlinux/i export llvm_opt="LLVM=1 LLVM_IAS=1"' linux-lqx/PKGBUILD
+           sed -i 's/make nconfig/make nconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i 's/make xconfig/make xconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i 's/make gconfig/make gconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i 's/make all/make ${llvm_opt} LOCALVERSION= bzImage modules/g' linux-lqx/PKGBUILD
+           sed -i 's/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_NONE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_HAS_LTO_CLANG' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG_FULL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_CLANG_THIN' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_FULL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
            cat linux-lqx/PKGBUILD
       - name: Build kernel
         run: |
