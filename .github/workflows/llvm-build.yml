@@ -44,6 +44,7 @@ jobs:
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config -k --disable DEFAULT_FQ_CODEL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config -k --disable WERROR' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config -k --enable DEFAULT_CAKE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_RTW88' linux-lqx/PKGBUILD
            cat linux-lqx/PKGBUILD
       - name: Build kernel
         run: |
