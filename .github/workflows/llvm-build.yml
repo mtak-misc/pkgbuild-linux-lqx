@@ -1,4 +1,4 @@
-name: build-liquorix
+name: llvm-build
 
 on:
   workflow_dispatch:
