@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: Check out linux-tkg repository
+      - name: Check out linux-lqx repository
         uses: actions/checkout@v3
         with:
           repository: damentz/linux-lqx
