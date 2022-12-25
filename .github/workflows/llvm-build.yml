@@ -13,9 +13,13 @@ jobs:
           swap-size-gb: 13
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Check out linux-tkg repository
+        uses: actions/checkout@v3
+        with:
+          repository: damentz/linux-lqx
+          path: linux-lqx
       - name: Prepare for build
         run: |
-           git clone https://aur.archlinux.org/linux-lqx.git
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch' linux-lqx/PKGBUILD
            curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.1/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
            sed -i -e '/export KBUILD_BUILD_HOST=archlinux/i export llvm_opt="LLVM=1 LLVM_IAS=1"' linux-lqx/PKGBUILD
