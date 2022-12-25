@@ -44,6 +44,7 @@ jobs:
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_INIT_ON_FREE_DEFAULT_ON' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD           
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tgrep -C 3 "struct rtw_chip_info *chip = rtwdev->chip;"' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i "s\/struct rtw_chip_info *chip = rtwdev->chip;\/const struct rtw_chip_info *chip = rtwdev->chip;\/g" drivers/net/wireless/realtek/rtw88/tx.h' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tcat drivers/net/wireless/realtek/rtw88/tx.h' linux-lqx/PKGBUILD
            cat linux-lqx/PKGBUILD
