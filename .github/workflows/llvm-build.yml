@@ -45,9 +45,12 @@ jobs:
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD           
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i "s\/struct rtw_chip_info\/const struct rtw_chip_info\/g" drivers/net/wireless/realtek/rtw88/tx.h' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i "s\/struct rtw_chip_info\/const struct rtw_chip_info\/g" drivers/net/wireless/realtek/rtw88/rtw8821c.c' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i "s\/struct rtw_chip_info\/const struct rtw_chip_info\/g" drivers/net/wireless/realtek/rtw88/rtw8822c.c' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i "s\/struct rtw_chip_info\/const struct rtw_chip_info\/g" drivers/net/wireless/realtek/rtw88/usb.c' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tsed -i -e "\/case I2C_SMBUS_BYTE:\/i [[fallthrough]];" drivers/i2c/busses/i2c-nct6775.c' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tcat drivers/i2c/busses/i2c-nct6775.c' linux-lqx/PKGBUILD
-           cat linux-lqx/PKGBUILD
+#           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tcat drivers/i2c/busses/i2c-nct6775.c' linux-lqx/PKGBUILD
+#           cat linux-lqx/PKGBUILD
       - name: Build kernel
         run: |
            docker run -e USERID=$(id -u $(whoami)) -e GITHUB_TOKEN=${{ secrets.pat }} -v $GITHUB_WORKSPACE:/workspace archlinux:latest /bin/bash /workspace/build.sh
