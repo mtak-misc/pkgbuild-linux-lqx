@@ -28,15 +28,9 @@ jobs:
            sed -i 's/make gconfig/make gconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i 's/make all/make ${llvm_opt} all/g' linux-lqx/PKGBUILD
            sed -i 's/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_NONE' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_HAS_LTO_CLANG' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG_FULL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_CLANG_THIN' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_FULL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config --disable CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
