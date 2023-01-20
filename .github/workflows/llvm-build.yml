@@ -28,18 +28,18 @@ jobs:
            sed -i 's/make gconfig/make gconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i 's/make all/make ${llvm_opt} all/g' linux-lqx/PKGBUILD
            sed -i 's/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_NONE' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_LTO_CLANG_FULL' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_LTO_CLANG_THIN' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_LTO_NONE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_LTO_CLANG_FULL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_LTO_CLANG_THIN' linux-lqx/PKGBUILD
            sed -i 's/pahole)/pahole llvm lld clang)/g' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_KCSAN' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_INIT_ON_FREE_DEFAULT_ON' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --disable CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --enable CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_KCSAN' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_ON_FREE_DEFAULT_ON' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config - CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
            sed -i -e '/patch -Np1 -i "\$_patchfolder\/\$_patchpath"/i \ \tsed -i "\s/struct rtw_chip_info \\*chip = rtwdev->chip;\/const struct rtw_chip_info \\*chip = rtwdev->chip;\/g" "\$_patchfolder\/\$_patchpath"' linux-lqx/PKGBUILD
            sed -i -e '/patch -Np1 -i "\$_patchfolder\/\$_patchpath"/i \ \tsed -i "s\/const const struct rtw_chip_info\/const struct rtw_chip_info\/g" "\$_patchfolder\/\$_patchpath"' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tsed -i -e "\/case I2C_SMBUS_BYTE:\/i fallthrough;" drivers/i2c/busses/i2c-nct6775.c' linux-lqx/PKGBUILD
