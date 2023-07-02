@@ -43,6 +43,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
+           sed -i -e 's/ec597465ed7ef24b7f5be63c184b00c6f12f66221d5d1530b0986dc36ebb309425db711e76faf97d557e181bc84372b7f7c97ed0038cbff7e1f2e02c8b7d3fab/SKIP/g' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
       - name: Build kernel
         run: |
