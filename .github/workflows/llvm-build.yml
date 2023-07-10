@@ -25,7 +25,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch' linux-lqx/PKGBUILD
            curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.4/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../fix_stackrot.patch' linux-lqx/PKGBUILD
-           curl -L https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id=9471f1f2f50282b9e8f59198ec6bb738b4ccc009 -o fix_stackrot.patch
+           curl -L https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/patch/?id=9471f1f2f50282b9e8f59198ec6bb738b4ccc009 -o linux-lqx/fix_stackrot.patch
            sed -i -e '/export KBUILD_BUILD_HOST=archlinux/i export llvm_opt="LLVM=1 LLVM_IAS=1"' linux-lqx/PKGBUILD
            sed -i 's/make nconfig/make nconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i 's/make xconfig/make xconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
