@@ -1,5 +1,5 @@
 #!/bin/sh
-pacman -Syu --noconfirm base-devel sudo schedtool python
+pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
 #pacman -Syu --noconfirm base-devel sudo git jq curl unzip schedtool python clang lld
 curl -sLJO -H 'Accept: application/octet-stream' \
 "https://$GITHUB_TOKEN@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/assets/$( \
