@@ -23,7 +23,7 @@ jobs:
       - name: Prepare for build
         run: |
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch' linux-lqx/PKGBUILD
-           curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.5/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
+           curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.6/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
            sed -i -e '/export KBUILD_BUILD_HOST=archlinux/i export llvm_opt="LLVM=1 LLVM_IAS=1"' linux-lqx/PKGBUILD
            sed -i 's/make nconfig/make nconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i 's/make xconfig/make xconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
