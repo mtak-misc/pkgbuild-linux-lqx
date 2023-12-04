@@ -49,7 +49,7 @@ jobs:
            export NEW=$(sha512sum 6.6-5.tar.gz | awk '{ print $1}')
            curl -LO https://github.com/damentz/liquorix-package/archive/6.6-4.tar.gz
            export OLD=$(sha512sum 6.6-4.tar.gz | awk '{ print $1}')
-           echo "sed -i 's/${OLD}/${NEW}/g' PKGBUILD" | bash
+           echo "sed -i 's/${OLD}/${NEW}/g' linux-lqx/PKGBUILD" | bash
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso2.patch' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso.patch' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_SRSO' linux-lqx/PKGBUILD
