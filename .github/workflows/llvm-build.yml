@@ -43,6 +43,8 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
+           sed -i -e 's/6.6.3.lqx1/6.6.4.lqx1/g' linux-lqx/PKGBUILD
+           sed -i -e 's/_lqxpatchrel=4/_lqxpatchrel=5/g' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso2.patch' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso.patch' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_SRSO' linux-lqx/PKGBUILD
