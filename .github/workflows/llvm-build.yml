@@ -64,7 +64,7 @@ jobs:
       - name: Build kernel
         run: |
           cd linux-lqx 
-          su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm
+          su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
 #           docker run -e USERID=$(id -u $(whoami)) -e GITHUB_TOKEN=${{ secrets.pat }} -v $GITHUB_WORKSPACE:/workspace archlinux:latest /bin/bash /workspace/build.sh
 #           cp $GITHUB_WORKSPACE/linux-lqx/*.pkg.tar.zst /tmp
       - uses: actions/upload-artifact@v3
