@@ -33,6 +33,8 @@ jobs:
           unzip llvm-git.zip
           pacman --noconfirm -U llvm-git*.pkg.tar.zst llvm-libs-git*.pkg.tar.zst
           useradd builder -m -G wheel && echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown builder -R ..
+          chown builder -R /tmp
           su builder -c "gpg --recv 38DBBDC86092693E"
       - name: Apply patches
         run: |
