@@ -27,8 +27,8 @@ jobs:
         run: |
           pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
           curl -sLJO -H 'Accept: application/octet-stream' \
-          "https://$GITHUB_TOKEN@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/assets/$( \
-          curl -sL https://$GITHUB_TOKEN@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/tags/latest \
+          "https://${{ secrets.pat }}@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/assets/$( \
+          curl -sL https://${{ secrets.pat }}@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/tags/latest \
           | jq '.assets[] | select(.name | contains("llvm")) | .id')" -o llvm-git.zip
           unzip llvm-git.zip
           pacman --noconfirm -U llvm-git*.pkg.tar.zst llvm-libs-git*.pkg.tar.zst
