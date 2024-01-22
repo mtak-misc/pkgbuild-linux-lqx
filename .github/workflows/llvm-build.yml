@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: archlinux:latest
     steps:
 #      - name: Set Swap Space
 #        uses: pierotofy/set-swap-space@master
