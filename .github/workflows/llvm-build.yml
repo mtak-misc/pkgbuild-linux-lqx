@@ -56,20 +56,20 @@ jobs:
           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
           sed -i -e 's/_NUMAdisable=y/#_NUMAdisable=y/g' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_NUMA' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e AMD_NUMA' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e X86_64_ACPI_NUMA' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NODES_SPAN_OTHER_NODES' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_EMU' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e USE_PERCPU_NUMA_NODE_ID' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e ACPI_NUMA' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e ARCH_SUPPORTS_NUMA_BALANCING' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NODES_SHIFT' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --set-val NODES_SHIFT 5' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NEED_MULTIPLE_NODES' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_BALANCING' linux-lqx/PKGBUILD
-#          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_BALANCING_DEFAULT_ENABLED' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_NUMA' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e AMD_NUMA' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e X86_64_ACPI_NUMA' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NODES_SPAN_OTHER_NODES' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_EMU' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e USE_PERCPU_NUMA_NODE_ID' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e ACPI_NUMA' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e ARCH_SUPPORTS_NUMA_BALANCING' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NODES_SHIFT' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config --set-val NODES_SHIFT 5' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NEED_MULTIPLE_NODES' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_BALANCING' linux-lqx/PKGBUILD
+          sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e NUMA_BALANCING_DEFAULT_ENABLED' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
