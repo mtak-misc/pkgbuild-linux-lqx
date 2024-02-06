@@ -78,7 +78,7 @@ jobs:
           sudo apt-get autoclean -y >/dev/null 2>&1 || true
           df -h
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Check out linux-lqx repository
         uses: actions/checkout@v4
         with:
