@@ -1,4 +1,4 @@
-name: llvm-build
+name: llvm-build_no-container
 
 on:
   workflow_dispatch:
