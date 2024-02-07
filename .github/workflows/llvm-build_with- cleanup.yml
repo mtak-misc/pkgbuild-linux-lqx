@@ -1,4 +1,4 @@
-name: llvm-build_no-container
+name: llvm-build_with-cleanup
 
 on:
   workflow_dispatch:
@@ -14,7 +14,6 @@ jobs:
 #        with:
 #          swap-size-gb: 13
       - name: Cleanup
-        if: ${{ 'true' == 'false' }}
         run: |
           docker images
           sudo rm -rf "/opt/*" || true
