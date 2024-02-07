@@ -19,6 +19,7 @@ jobs:
           pwd
           free -h
       - name: Cleanup
+        if: ${{ 'true' == 'false' }}
         run: |
           docker images
           sudo rm -rf "/opt/*" || true
