@@ -13,11 +13,6 @@ jobs:
 #        uses: pierotofy/set-swap-space@master
 #        with:
 #          swap-size-gb: 13
-      - name: Test
-        run: |
-          df -h
-          pwd
-          free -h
       - name: Cleanup
         run: |
           docker images
