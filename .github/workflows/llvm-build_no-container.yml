@@ -50,8 +50,8 @@ jobs:
       - name: Build kernel
         uses: docker://archlinux:latest
         with:
-          entrypoint: './llvm-build.sh'
-          args: $(id -u $(whoami)) ${{ secrets.pat }} 
+          entrypoint: 'ls .'
+#          args: $(id -u $(whoami)) ${{ secrets.pat }} 
 #        run: |
 #           docker run -e USERID=$(id -u $(whoami)) -e GITHUB_TOKEN=${{ secrets.pat }} -v $GITHUB_WORKSPACE:/workspace archlinux:latest /bin/bash /workspace/build.sh
 #           cp $GITHUB_WORKSPACE/linux-lqx/*.pkg.tar.zst /tmp
