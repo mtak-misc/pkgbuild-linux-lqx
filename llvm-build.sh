@@ -1,6 +1,8 @@
 #!/bin/sh
 USERID=$1
 GITHUB_TOKEN=$2
+
+cd linux-lqx
 pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
 #pacman -Syu --noconfirm base-devel sudo git jq curl unzip schedtool python clang lld
 curl -sLJO -H 'Accept: application/octet-stream' \
