@@ -1,6 +1,6 @@
 #!/bin/sh
 #USERID=$1
-GITHUB_TOKEN=$2
+GITHUB_TOKEN=$1
 
 pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
 #pacman -Syu --noconfirm base-devel sudo git jq curl unzip schedtool python clang lld
