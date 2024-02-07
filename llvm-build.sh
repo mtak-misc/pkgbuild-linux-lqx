@@ -1,5 +1,5 @@
 #!/bin/sh
-USERID=$1
+#USERID=$1
 GITHUB_TOKEN=$2
 
 pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
