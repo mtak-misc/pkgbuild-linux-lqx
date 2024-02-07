@@ -114,15 +114,13 @@ jobs:
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
         env: 
           USERID: ''
-      - name: Build kernel
-        uses: docker://archlinux:latest
-        with:
-          entrypoint: '/bin/sh'
-          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
-#        run: |
-#           docker run -e USERID=$(id -u $(whoami)) -e GITHUB_TOKEN=${{ secrets.pat }} -v $GITHUB_WORKSPACE:/workspace archlinux:latest /bin/bash /workspace/build.sh
-#           cp $GITHUB_WORKSPACE/linux-lqx/*.pkg.tar.zst /tmp
+#      - name: Build kernel
+#        uses: docker://archlinux:latest
+#        with:
+#          entrypoint: '/bin/sh'
+#          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
       - uses: actions/upload-artifact@v4
         with:
           name: linux-lqx
-          path: ${GITHUB_WORKSPACE}/linux-lqx/*.pkg.tar.zst
+          path: ${{ github.workspace }}/linux-lqx/PKGBUIL*
+#          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
