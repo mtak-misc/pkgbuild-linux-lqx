@@ -14,7 +14,7 @@ jobs:
 #        with:
 #          swap-size-gb: 13
       - name: Cleanup
-        if: ${{ 'true' == 'false' }}
+#        if: ${{ 'true' == 'false' }}
         run: |
           docker images
           sudo rm -rf "/opt/*" || true
@@ -105,23 +105,14 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso2.patch' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso.patch' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_SRSO' linux-lqx/PKGBUILD
-#           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
         env: 
           USERID: ''
-#      - name: Build kernel
-#        uses: docker://archlinux:latest
-#        with:
-#          entrypoint: '/bin/sh'
-#          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
+      - name: Build kernel
+        uses: docker://archlinux:latest
+        with:
+          entrypoint: '/bin/sh'
+          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
       - uses: actions/upload-artifact@v4
         with:
           name: linux-lqx
-          path: ${{ github.workspace }}/linux-lqx/PKGBUIL*
-#          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
+          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
