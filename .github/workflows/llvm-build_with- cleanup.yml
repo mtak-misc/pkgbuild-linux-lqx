@@ -14,7 +14,6 @@ jobs:
 #        with:
 #          swap-size-gb: 13
       - name: Cleanup
-        if: ${{ 'true' == 'false' }}
         run: |
           docker images
           sudo rm -rf "/opt/*" || true
@@ -104,7 +103,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
-#           echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
+           echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
@@ -113,13 +112,13 @@ jobs:
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../../srso.patch' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_CPU_SRSO' linux-lqx/PKGBUILD
 #           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE' linux-lqx/PKGBUILD
-#        env: 
-#          USERID: ''
+        env: 
+          USERID: ''
       - name: Build kernel
         uses: docker://archlinux:latest
         with:
           entrypoint: '/bin/sh'
-          args: ./llvm-build.sh ${{ secrets.pat }} 
+          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
 #        run: |
 #           docker run -e USERID=$(id -u $(whoami)) -e GITHUB_TOKEN=${{ secrets.pat }} -v $GITHUB_WORKSPACE:/workspace archlinux:latest /bin/bash /workspace/build.sh
 #           cp $GITHUB_WORKSPACE/linux-lqx/*.pkg.tar.zst /tmp
