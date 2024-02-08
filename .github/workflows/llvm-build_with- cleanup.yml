@@ -112,7 +112,7 @@ jobs:
         with:
           entrypoint: '/bin/sh'
           args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
-      - name: Upload package
+      - name: Upload packages
         uses: actions/upload-artifact@v4
         with:
           name: linux-lqx
