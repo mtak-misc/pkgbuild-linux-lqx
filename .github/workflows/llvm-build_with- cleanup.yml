@@ -112,7 +112,8 @@ jobs:
         with:
           entrypoint: '/bin/sh'
           args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
-      - uses: actions/upload-artifact@v4
+      - name: Upload package
+        uses: actions/upload-artifact@v4
         with:
           name: linux-lqx
           path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
