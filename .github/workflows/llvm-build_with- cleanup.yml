@@ -85,7 +85,7 @@ jobs:
         with:
           repository: damentz/linux-lqx
           path: linux-lqx
-      - name: Prepare for build
+      - name: Apply patches
         run: |
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tpatch -Np1 -i ../../O3.patch' linux-lqx/PKGBUILD
            curl -L https://raw.githubusercontent.com/Frogging-Family/linux-tkg/master/linux-tkg-patches/6.6/0013-optimize_harder_O3.patch -o linux-lqx/O3.patch
