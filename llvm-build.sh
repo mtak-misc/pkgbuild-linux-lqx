@@ -5,8 +5,8 @@ GITHUB_TOKEN=$2
 pacman -Syu --noconfirm base-devel sudo schedtool jq unzip python
 #pacman -Syu --noconfirm base-devel sudo git jq curl unzip schedtool python clang lld
 curl -sLJO -H 'Accept: application/octet-stream' \
-"https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/assets/$( \
-curl -sL https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/pkgbuild-llvm-git/releases/tags/latest \
+"https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/archive/releases/assets/$( \
+curl -sL https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/archive/releases/tags/latest \
 | jq '.assets[] | select(.name | contains("llvm")) | .id')"
 unzip llvm.zip
 pacman --noconfirm -U *.pkg.tar.zst
