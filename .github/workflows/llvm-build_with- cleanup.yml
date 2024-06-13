@@ -105,6 +105,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_UNICODE_NORMALIZATION_SELFTEST' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_NLS_UCS2_UTILS' linux-lqx/PKGBUILD
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
         env: 
           USERID: ''
