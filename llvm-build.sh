@@ -23,4 +23,4 @@ curl -sL https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/archive/releases
 unzip llvm.zip
 pacman --noconfirm -U *.pkg.tar.zst
 su builder -c "gpg --recv 38DBBDC86092693E"
-cd ./linux-lqx ; su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
+cd ../linux-lqx ; su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
