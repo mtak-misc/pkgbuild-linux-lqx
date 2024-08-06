@@ -105,7 +105,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
-           sed -i -3 's/pkgver=6.10.1.lqx1/pkgver=6.10.3.lqx1/g' linux-lqx/PKGBUILD
+           sed -i -e 's/pkgver=6.10.1.lqx1/pkgver=6.10.3.lqx1/g' linux-lqx/PKGBUILD
         env: 
           USERID: ''
       - name: Build kernel
