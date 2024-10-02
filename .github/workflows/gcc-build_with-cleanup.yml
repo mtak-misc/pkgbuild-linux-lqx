@@ -1,0 +1,107 @@
+name: gcc-build_with-cleanup
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 18 24 1 *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+#      - name: Set Swap Space
+#        uses: pierotofy/set-swap-space@master
+#        with:
+#          swap-size-gb: 13
+      - name: Cleanup
+#        if: ${{ 'true' == 'false' }}
+        run: |
+          docker images
+          sudo rm -rf "/opt/*" || true
+          sudo rm -rf "/usr/share/dotnet" || true
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true
+          sudo rm -rf "/usr/local/lib/android" || true
+          sudo rm -rf "/usr/local/share/boost" || true
+          sudo rm -rf "/usr/lib/jvm" || true
+          sudo rm -rf "/usr/share/swift" || true
+          sudo rm -rf "/usr/local/julia*" || true
+          sudo rm -rf "/usr/share/kotlinc" || true
+          sudo rm -rf "/usr/local/share/edge_driver" || true
+          sudo rm -rf "/usr/local/share/chromedriver-linux64" || true
+          sudo rm -rf "/usr/local/share/gecko_driver" || true
+          sudo rm -rf "/usr/share/miniconda" || true
+          sudo rm -rf "/usr/local/share/phantomjs*" || true
+          sudo rm -rf "/usr/share/sbt" || true
+          sudo rm -rf "/usr/local/sqlpackage" || true
+          docker rmi $(docker image ls -q --filter "reference=node*")
+          docker rmi $(docker image ls -q --filter "reference=debian*")
+          docker rmi $(docker image ls -q --filter "reference=alpine*")
+          docker rmi $(docker image ls -q --filter "reference=ubuntu:20.04")
+          sudo npm uninstall bazel
+          rustup self uninstall -y
+          sudo apt purge \
+            ansible \
+            apache2 \
+            aria2 \
+            azure-cli \
+            cabal* \
+            clang* \
+            dotnet-sdk* \
+            firefox \
+            ghc* \
+            google-chrome-stable \
+            google-cloud-sdk \
+            kubectl \
+            libpq-dev \
+            microsoft-edge-stable \
+            moby-buildx \
+            moby-cli \
+            moby-compose \
+            moby-engine \
+            mongodb* \
+            mono-complete \
+            mysql* \
+            nginx \
+            node* \
+            npm* \
+            nuget \
+            php* \
+            postgresql* \
+            powershell \
+            r-base \
+            rpm \
+            ruby* \
+            sphinxsearch \
+            subversion \
+            yarn \
+            -yq >/dev/null 2>&1 || true
+          sudo apt-get autoremove -y >/dev/null 2>&1 || true
+          sudo apt-get autoclean -y >/dev/null 2>&1 || true
+          df -h
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check out linux-lqx repository
+        uses: actions/checkout@v4
+        with:
+          repository: damentz/linux-lqx
+          path: linux-lqx
+      - name: Apply patches
+        run: |
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_KCSAN' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_ON_FREE_DEFAULT_ON' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
+           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
+           echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
+        env: 
+          USERID: ''
+      - name: Build kernel
+        uses: docker://archlinux:latest
+        with:
+          entrypoint: '/bin/sh'
+          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-lqx
+          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
