@@ -11,7 +11,7 @@ curl -sLJO -H 'Accept: application/octet-stream' \
 curl -sL https://${GITHUB_TOKEN}@api.github.com/repos/mtak-misc/archive/releases/tags/latest \
 | jq '.assets[] | select(.name | contains("llvm")) | .id')"
 unzip llvm.zip
-pacman --noconfirm -U *.pkg.tar.zst
+pacman --disable-sandbox --noconfirm -U *.pkg.tar.zst
 
 su builder -c "gpg --recv 38DBBDC86092693E"
 cd ./linux-lqx ; su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
