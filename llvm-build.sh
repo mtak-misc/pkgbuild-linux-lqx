@@ -14,4 +14,4 @@ unzip llvm.zip
 pacman --disable-sandbox --noconfirm -U *.pkg.tar.zst
 
 su builder -c "gpg --recv 38DBBDC86092693E"
-cd ./linux-lqx ; su builder -c "yes '' | MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
+cd ./linux-lqx ; su builder -c "yes '' | KCFLAGS=' -march=x86-64-v2' KCPPFLAGS=' -march=x86-64-v2' MAKEFLAGS=\"-j $(nproc)\" makepkg --noconfirm -sc"
