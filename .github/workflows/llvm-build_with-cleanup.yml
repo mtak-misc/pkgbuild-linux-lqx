@@ -104,7 +104,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts\/config --set-val CONFIG_X86_64_VERSION 2' linux-lqx/PKGBUILD
            sed -i -e "/cd $_srcname/a \ \ export KCPPFLAGS=' -march=x86-64-v2'" linux-lqx/PKGBUILD
            sed -i -e "/cd $_srcname/a \ \ export KCFLAGS=' -march=x86-64-v2'" linux-lqx/PKGBUILD
-           cat linux-lqx/PKGBUILD
+
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
         env: 
           USERID: ''
