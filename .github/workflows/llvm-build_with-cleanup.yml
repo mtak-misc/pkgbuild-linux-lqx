@@ -102,8 +102,8 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts\/config --set-val CONFIG_X86_64_VERSION 2' linux-lqx/PKGBUILD
-           sed -i -e "/make all/i \ \t\tKCFLAGS=' -march=x86-64-v2' export KCPPFLAGS=' -march=x86-64-v2" linux-lqx/PKGBUILD
-           sed -i -e "/make all/i \ \t\tKCFLAGS=' -march=x86-64-v2' export KCFLAGS=' -march=x86-64-v2" linux-lqx/PKGBUILD
+           sed -i -e "/cd $_srcname/a \ \t\tKCFLAGS=' -march=x86-64-v2' export KCPPFLAGS=' -march=x86-64-v2" linux-lqx/PKGBUILD
+           sed -i -e "/cd $_srcname/a \ \t\tKCFLAGS=' -march=x86-64-v2' export KCFLAGS=' -march=x86-64-v2" linux-lqx/PKGBUILD
            cat linux-lqx/PKGBUILD
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
         env: 
