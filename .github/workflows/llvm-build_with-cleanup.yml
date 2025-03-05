@@ -96,15 +96,7 @@ jobs:
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_LTO_CLANG_FULL' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_LTO_CLANG_THIN' linux-lqx/PKGBUILD
            sed -i 's/gettext/gettext llvm lld clang/g' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_KCSAN' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_ON_FREE_DEFAULT_ON' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_INIT_STACK_ALL_ZERO' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_INIT_STACK_NONE' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -e CONFIG_STACK_VALIDATION' linux-lqx/PKGBUILD
-           sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts\/config --set-val CONFIG_X86_64_VERSION 2' linux-lqx/PKGBUILD
-           sed -i -e "/cd $_srcname/a \ \ export KCPPFLAGS=' -march=x86-64-v2'" linux-lqx/PKGBUILD
-           sed -i -e "/cd $_srcname/a \ \ export KCFLAGS=' -march=x86-64-v2'" linux-lqx/PKGBUILD
-
+           
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
         env: 
           USERID: ''
