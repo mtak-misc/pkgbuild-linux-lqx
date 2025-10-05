@@ -14,13 +14,13 @@ jobs:
 #        with:
 #          swap-size-gb: 13
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Cleanup
 #        if: ${{ 'true' == 'false' }}
         run: |
           sh ./cleanup.sh
       - name: Check out linux-lqx repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: damentz/linux-lqx
           path: linux-lqx
