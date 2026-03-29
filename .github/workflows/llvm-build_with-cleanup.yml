@@ -20,7 +20,7 @@ jobs:
         run: |
           sh ./cleanup.sh
       - name: Check out linux-lqx repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: damentz/linux-lqx
           path: linux-lqx
