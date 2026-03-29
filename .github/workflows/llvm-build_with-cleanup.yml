@@ -51,13 +51,13 @@ jobs:
         env: 
           USERID: ''
           GH_TOKEN: ${{ secrets.pat }}
-#      - name: Build kernel
-#        uses: docker://archlinux:latest
-#        with:
-#          entrypoint: '/bin/sh'
-#          args: ./llvm-build.sh ${{ env.USERID }} ${{ secrets.pat }} 
-#      - name: Upload packages
-#        uses: actions/upload-artifact@v7
-#        with:
-#          name: linux-lqx
-#          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
+      - name: Build kernel
+        uses: docker://archlinux:latest
+        with:
+          entrypoint: '/bin/sh'
+          args: ./llvm-build.sh ${{ env.USERID }}
+      - name: Upload packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: linux-lqx
+          path: ${{ github.workspace }}/linux-lqx/*.pkg.tar.zst
