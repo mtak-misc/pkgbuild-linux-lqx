@@ -46,7 +46,7 @@ jobs:
            sed -i -e "/cd $_srcname/a \ \ export KCFLAGS=' -march=x86-64-v2'" linux-lqx/PKGBUILD
 
            echo "USERID=$(id -u $(whoami))" >> $GITHUB_ENV
-           gh release download --repo mtak-misc/archive --pattern "llvm.zip"
+           gh release download --repo mtak-misc/archive --pattern "llvm*"
            unzip llvm.zip
         env: 
           USERID: ''
