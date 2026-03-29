@@ -50,7 +50,7 @@ jobs:
            unzip llvm.zip
         env: 
           USERID: ''
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.pat }}
 #      - name: Build kernel
 #        uses: docker://archlinux:latest
 #        with:
