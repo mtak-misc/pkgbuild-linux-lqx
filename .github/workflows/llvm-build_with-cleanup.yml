@@ -27,9 +27,9 @@ jobs:
       - name: Apply patches
         run: |
            sed -i -e '/export KBUILD_BUILD_HOST=archlinux/i export llvm_opt="LLVM=1 LLVM_IAS=1"' linux-lqx/PKGBUILD
-           sed -i 's/make nconfig/make nconfig ${llvm_opt} KCFLAGS=" -march=x86-64-v2" KCPPFLAGS=" -march=x86-64-v2" /g' linux-lqx/PKGBUILD
-           sed -i 's/make xconfig/make xconfig ${llvm_opt} KCFLAGS=" -march=x86-64-v2" KCPPFLAGS=" -march=x86-64-v2" /g' linux-lqx/PKGBUILD
-           sed -i 's/make gconfig/make gconfig ${llvm_opt} KCFLAGS=" -march=x86-64-v2" KCPPFLAGS=" -march=x86-64-v2" /g' linux-lqx/PKGBUILD
+           sed -i 's/make nconfig/make nconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i 's/make xconfig/make xconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
+           sed -i 's/make gconfig/make gconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i 's/make all/make ${llvm_opt} all/g' linux-lqx/PKGBUILD
            sed -i 's/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig/make LSMOD=$HOME\/.config\/modprobed.db localmodconfig ${llvm_opt} /g' linux-lqx/PKGBUILD
            sed -i -e '/scripts\/config -d CONFIG_SCHED_BMQ/i \ \t\tscripts/config -d CONFIG_LTO_NONE' linux-lqx/PKGBUILD
