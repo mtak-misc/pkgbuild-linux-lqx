@@ -16,7 +16,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
       - name: Cleanup
-#        if: ${{ 'true' == 'false' }}
+        if: ${{ 'true' == 'false' }}
         run: |
           sh ./cleanup.sh
       - name: Check out linux-lqx repository
